@@ -1,0 +1,181 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-blur: 25px;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  background-color: #0a0a1a;
+}
+
+/* Background */
+.mesh-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: #ba8cbe;
+}
+
+/* PALETA DE COLORES */
+:root {
+  --morado-oscuro: #642AA2;
+  --morado-brillante: #B02BEE;
+  --rosa-claro: #ECA2D7;
+  --blanco-ios: rgba(255, 255, 255, 0.15);
+}
+
+/* PANEL GLASS IOS */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 35px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 420px;
+  margin: 2rem 1rem;
+  position: relative;
+  z-index: 1;
+  animation: panelIn .8s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(40px) scale(.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Logo y Nombre */
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: #fff;
+  padding: 5px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.brand-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #fff;
+  word-spacing: 0.15em;
+}
+
+
+
+/* BOTÓN ANIMADO BASE */
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 40px;
+  margin-bottom: 15px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--blanco-ios);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 100px;
+  font-weight: 600;
+  color: #1d1d1f; /* Dark text for contrast on light glass */
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 20px;
+  fill: #1d1d1f; /* Dark icon */
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 { right: 20px; }
+.animated-button .arr-2 { left: -25%; }
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: var(--morado-brillante);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 0;
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-10px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* HOVER EFFECTS */
+.animated-button:hover {
+  border-radius: 15px;
+  color: #fff; /* White text over the purple circle */
+  transform: scale(1.02);
+}
+
+.animated-button:hover svg {
+  fill: #fff; /* White icon over the purple circle */
+}
+
+.animated-button:hover .circle {
+  width: 400px;
+  height: 400px;
+  opacity: 1;
+}
+
+.animated-button:hover .arr-1 { right: -25%; }
+.animated-button:hover .arr-2 { left: 20px; }
+.animated-button:hover .text { transform: translateX(12px); }
+
+.animated-button:active { transform: scale(0.95); }
+
+/* Responsive adjustments */
+@media(max-width: 480px) {
+  .glass-panel { padding: 2rem 1.4rem; margin: 1rem; border-radius: 22px; }
+  .brand-name { font-size: 1.5rem; }
+  .profile-pic { width: 90px; height: 90px; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .15); border-radius: 3px; }
